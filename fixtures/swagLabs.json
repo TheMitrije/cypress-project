@@ -1,0 +1,14 @@
+{
+  "userInfo": {
+    "name": "Dimitrije",
+    "lastname": "Stojanovic",
+    "city": "Novi Sad 21000"
+  },
+
+  "products": {
+    "backpackName": "Sauce Labs Backpack",
+    "backpackDesc": "Sly Pack that melds uncompromising",
+    "onesieName": "Sauce Labs Onesie",
+    "blackTshirtName": "Sauce Labs Bolt T-Shirt"
+  }
+}
