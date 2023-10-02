@@ -1,0 +1,2 @@
+# DimitrijeStojanovic_QAA_OMEGA
+Omega assingment
