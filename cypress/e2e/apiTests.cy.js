@@ -20,16 +20,17 @@ describe("API", () => {
   });
 
   it("Get user information", () => {
-    cy.request("GET", "api/users/2").then((response) => {
+    cy.request("GET", "api/users/7").then((response) => {
       expect(response.status).to.eq(200);
       expect(response.headers).to.not.eq(0);
-      expect(response.body.data.id).to.eq(2);
+      expect(response.body.data.id).to.eq(7);
+      expect(response.body.data.first_name).to.eq(data.userDataTwo.name);
       return (userId = response.body.data.id);
     });
   });
 
   it("Update job of the user", () => {
-    cy.request("PATCH", "api/users/2", {
+    cy.request("PATCH", "api/users/", {
       job: data.userData.job,
     }).then((response) => {
       expect(response.status).to.eq(200);
@@ -38,7 +39,9 @@ describe("API", () => {
   });
 
   it("Delete the user", () => {
-    cy.request("DELETE", "api/users/" + userId);
+    cy.request("DELETE", "api/users/" + userId).then((response) => {
+      expect(response.body).to.eq("")
+    });
   });
 
   it("Unsuccessful login", () => {
