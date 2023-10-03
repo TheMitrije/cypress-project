@@ -5,7 +5,7 @@ import pageLinks from "../pages/pageLinks";
 
 let data;
 
-describe("SwagLabs app test automation", () => {
+describe("SwagLabs app automation", () => {
   beforeEach(() => {
     cy.login()
     pageLinks.elements.inventoryPageUrl();
