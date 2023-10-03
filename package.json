@@ -6,16 +6,17 @@
   "scripts": {
     "test": "test",
     "cypress:open": "cypress open",
-    "test-report": "cypress run --spec cypress/e2e/*.cy.js --browser chrome --headless"
+    "test-report": "cypress run --spec cypress/e2e/*.cy.js --config-file=cypress.config.js --browser chrome --headless"
   },
   "keywords": [
     "cypress-automation"
   ],
   "author": "Dimitrije",
   "license": "ISC",
-  
-  "devDependencies": {
-    "cypress-mochawesome-reporter": "^3.6.0",
+  "dependencies": {
     "cypress": "^13.2.0"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.6.0"
   }
 }
