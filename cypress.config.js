@@ -5,7 +5,7 @@ module.exports = defineConfig({
   e2e: {
     env: {
       // requestMode: true,
-      hideCredentials: true,
+      hideCredentials: false,
     },
     setupNodeEvents(on, config) {
 
