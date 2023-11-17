@@ -9,7 +9,7 @@ describe("API", () => {
   });
 
   it("Create user", () => {
-    cy.request("POST", "api/users", {
+    cy.api("POST", "api/users", {
       name: data.userData.name,
       job: data.userData.job,
     }).then((response) => {
@@ -20,7 +20,7 @@ describe("API", () => {
   });
 
   it("Get user information", () => {
-    cy.request("GET", "api/users/7").then((response) => {
+    cy.api("GET", "api/users/7").then((response) => {
       expect(response.status).to.eq(200);
       expect(response.headers).to.not.eq(0);
       expect(response.body.data.id).to.eq(7);
@@ -30,7 +30,7 @@ describe("API", () => {
   });
 
   it("Update job of the user", () => {
-    cy.request("PATCH", "api/users/", {
+    cy.api("PATCH", "api/users/", {
       job: data.userData.job,
     }).then((response) => {
       expect(response.status).to.eq(200);
@@ -39,13 +39,13 @@ describe("API", () => {
   });
 
   it("Delete the user", () => {
-    cy.request("DELETE", "api/users/" + userId).then((response) => {
+    cy.api("DELETE", "api/users/" + userId).then((response) => {
       expect(response.body).to.eq("")
     });
   });
 
   it("Unsuccessful login", () => {
-    cy.request({
+    cy.api({
       method: "POST",
       url: "api/login",
       failOnStatusCode: false,
