@@ -32,7 +32,7 @@ describe("SwagLabs app automation", () => {
     inventoryPage.validateHighToLow();
   });
 
-  it("Add two products then remove one", () => {
+  it("Add two products then remove onee", () => {
     // Add desired items to cart
     inventoryPage.addToCart(data.products.backpackName);
     inventoryPage.addToCart(data.products.onesieName);
