@@ -1,5 +1,4 @@
-# DimitrijeStojanovic_QAA_OMEGA
-Omega assignment
+Cypress assignment
 
 To run tests and generate reports with mochawesome reported. Use command:
 npm run test-report
