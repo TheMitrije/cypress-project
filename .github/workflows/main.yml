@@ -1,17 +1,29 @@
-name: Cypress Tests
-
-on: push
-
+name: 'BrowserStack Test'
+on: [push, pull_request]
 jobs:
-  cypress-run:
-    runs-on: ubuntu-22.04
+  ubuntu-job:
+    name: 'BrowserStack Test on Ubuntu'
+    runs-on: ubuntu-latest  # Can be self-hosted runner also
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+
+      - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
+        uses: browserstack/github-actions/setup-env@master
         with:
-          start: npx cypress run
-          browser: chrome
+          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+# The next 3 steps are for building the web application to be tested and starting the web server on the runner environment
+      - name: 'Checkout the repository'
+        uses: actions/checkout@v2
+
+      - name: 'Building web application to be tested'
+        run: npm install
+
+      - name: 'Running application under test'
+        run: ./node_modules/.bin/http-server -p 8099 &
+
+      - name: 'Installing browserstack-cypress-cli'
+        run: npm install -g browserstack-cypress-cli
+
+      - name: 'Running test on BrowserStack with local testing enabled'  # Invokes the actual test script that would run on BrowserStack browsers
+        run: BROWSERSTACK_LOCAL=true browserstack-cypress run # See sample test script above
