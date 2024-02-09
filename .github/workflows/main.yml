@@ -15,3 +15,7 @@ jobs:
         with:
           start: npx cypress run
           browser: chrome
+        env:
+            CYPRESS_email: ${{secrets.CYPRESS_EMAIL}}
+            CYPRESS_username: ${{secrets.CYPRESS_USERNAME}}
+            CYPRESS_password: ${{secrets.CYPRESS_PASSWORD}}
